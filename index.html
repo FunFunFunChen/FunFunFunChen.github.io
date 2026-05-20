@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ParentReply</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="ParentReply navigation">
+        <div class="brand">
+          <div class="brand-mark" aria-hidden="true">PR</div>
+          <div>
+            <p class="brand-name">ParentReply</p>
+            <p class="brand-subtitle">親師訊息回覆助理</p>
+          </div>
+        </div>
+
+        <nav class="nav-list" aria-label="主要功能">
+          <button class="nav-item active" type="button">
+            <span aria-hidden="true">✦</span>
+            回覆工作台
+          </button>
+          <button class="nav-item" type="button">
+            <span aria-hidden="true">✓</span>
+            待辦提醒
+          </button>
+          <button class="nav-item" type="button">
+            <span aria-hidden="true">◇</span>
+            常用模板
+          </button>
+        </nav>
+
+        <div class="side-panel">
+          <p class="panel-label">今日重點</p>
+          <strong>3</strong>
+          <span>則訊息需要確認</span>
+        </div>
+      </aside>
+
+      <main class="workspace">
+        <header class="topbar">
+          <div>
+            <h1>回覆老師訊息</h1>
+            <p>貼上老師通知，ParentReply 會整理重點並產生自然、有禮貌的回覆草稿。</p>
+          </div>
+          <button class="ghost-button" id="loadSample" type="button">載入範例</button>
+        </header>
+
+        <section class="reply-grid" aria-label="ParentReply workspace">
+          <div class="input-pane">
+            <label for="teacherMessage">老師訊息</label>
+            <textarea
+              id="teacherMessage"
+              placeholder="例如：各位家長您好，明天自然課會進行植物觀察，請孩子攜帶一個透明塑膠杯和一張廚房紙巾，謝謝配合。"
+            ></textarea>
+
+            <div class="control-row" aria-label="回覆語氣">
+              <button class="tone-chip active" type="button" data-tone="polite">禮貌簡短</button>
+              <button class="tone-chip" type="button" data-tone="warm">親切感謝</button>
+              <button class="tone-chip" type="button" data-tone="formal">正式確認</button>
+              <button class="tone-chip" type="button" data-tone="question">詢問細節</button>
+            </div>
+
+            <button class="primary-button" id="generateReply" type="button">產生回覆</button>
+          </div>
+
+          <div class="output-pane">
+            <section class="summary-band" aria-labelledby="summaryTitle">
+              <div class="section-heading">
+                <h2 id="summaryTitle">重點摘要</h2>
+                <span id="replyStatus">等待訊息</span>
+              </div>
+              <ul class="summary-list" id="summaryList">
+                <li>貼上老師訊息後，這裡會整理日期、物品、金額和是否需要回覆。</li>
+              </ul>
+            </section>
+
+            <section class="draft-area" aria-labelledby="draftTitle">
+              <div class="section-heading">
+                <h2 id="draftTitle">回覆草稿</h2>
+                <button class="icon-button" id="copyReply" type="button" aria-label="複製回覆" title="複製回覆">
+                  ⧉
+                </button>
+              </div>
+              <div class="draft-box" id="replyDraft">
+                輸入老師訊息後，ParentReply 會在這裡提供可直接貼回 LINE 或聯絡簿的回覆。
+              </div>
+            </section>
+
+            <section class="reminder-strip" aria-label="待辦提醒">
+              <div>
+                <span class="mini-label">建議提醒</span>
+                <p id="reminderText">尚未偵測到需要提醒的事項。</p>
+              </div>
+              <button class="ghost-button compact" id="saveReminder" type="button">加入待辦</button>
+            </section>
+          </div>
+        </section>
+
+        <section class="template-band" aria-label="常用情境">
+          <button class="template-card" type="button" data-template="sick">請病假</button>
+          <button class="template-card" type="button" data-template="absence">請事假</button>
+          <button class="template-card" type="button" data-template="forgot">忘記帶物品</button>
+          <button class="template-card" type="button" data-template="thanks">感謝老師</button>
+          <button class="template-card" type="button" data-template="payment">繳費確認</button>
+        </section>
+      </main>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
