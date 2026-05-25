@@ -56,17 +56,47 @@
               placeholder="例如：各位家長您好，明天自然課會進行植物觀察，請孩子攜帶一個透明塑膠杯和一張廚房紙巾，謝謝配合。"
             ></textarea>
 
-            <div class="control-row" aria-label="回覆語氣">
+            <div class="field-group">
+              <span class="field-label">媽媽現在心情</span>
+              <div class="control-row" aria-label="媽媽現在心情">
+                <button class="mood-chip active" type="button" data-mood="steady">冷靜處理</button>
+                <button class="mood-chip" type="button" data-mood="sorry">有點抱歉</button>
+                <button class="mood-chip" type="button" data-mood="anxious">有點焦急</button>
+                <button class="mood-chip" type="button" data-mood="boundary">需要界線</button>
+              </div>
+            </div>
+
+            <div class="field-group">
+              <span class="field-label">回覆語氣</span>
+              <div class="control-row" aria-label="回覆語氣">
               <button class="tone-chip active" type="button" data-tone="polite">禮貌簡短</button>
               <button class="tone-chip" type="button" data-tone="warm">親切感謝</button>
               <button class="tone-chip" type="button" data-tone="formal">正式確認</button>
               <button class="tone-chip" type="button" data-tone="question">詢問細節</button>
+              </div>
             </div>
 
             <button class="primary-button" id="generateReply" type="button">產生回覆</button>
           </div>
 
           <div class="output-pane">
+            <section class="emotion-panel" aria-labelledby="emotionTitle">
+              <div class="section-heading">
+                <h2 id="emotionTitle">老師語氣判讀</h2>
+                <span id="emotionLevel">尚未分析</span>
+              </div>
+              <div class="emotion-grid">
+                <div>
+                  <span class="mini-label">可能情緒</span>
+                  <p id="teacherEmotion">貼上訊息後，這裡會判斷老師是否只是提醒，或可能已經不耐煩、反諷、多次提醒。</p>
+                </div>
+                <div>
+                  <span class="mini-label">回覆策略</span>
+                  <p id="replyStrategy">先承接老師感受，再確認行動，避免只回「收到」。</p>
+                </div>
+              </div>
+            </section>
+
             <section class="summary-band" aria-labelledby="summaryTitle">
               <div class="section-heading">
                 <h2 id="summaryTitle">重點摘要</h2>
