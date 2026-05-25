@@ -221,6 +221,7 @@ textarea:focus {
 }
 
 .tone-chip,
+.mood-chip,
 .template-card,
 .ghost-button,
 .primary-button,
@@ -232,14 +233,27 @@ textarea:focus {
     background 0.15s ease;
 }
 
-.tone-chip {
+.field-group {
+  display: grid;
+  gap: 8px;
+}
+
+.field-label {
+  color: var(--navy);
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.tone-chip,
+.mood-chip {
   min-height: 38px;
   border: 1px solid #ccd6e2;
   color: var(--navy);
   background: #ffffff;
 }
 
-.tone-chip.active {
+.tone-chip.active,
+.mood-chip.active {
   border-color: var(--teal);
   color: #ffffff;
   background: var(--teal);
@@ -278,9 +292,29 @@ textarea:focus {
   gap: 16px;
 }
 
+.emotion-panel,
 .summary-band,
 .draft-area {
   padding: 20px;
+}
+
+.emotion-panel {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #ffffff;
+  box-shadow: var(--shadow);
+}
+
+.emotion-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.emotion-grid p {
+  margin-bottom: 0;
+  color: #394456;
+  line-height: 1.65;
 }
 
 .section-heading {
@@ -298,10 +332,15 @@ h2 {
 }
 
 #replyStatus,
+#emotionLevel,
 .mini-label {
   color: var(--teal);
   font-size: 13px;
   font-weight: 800;
+}
+
+#emotionLevel.warning {
+  color: var(--rose);
 }
 
 .summary-list {
@@ -404,6 +443,10 @@ h2 {
   }
 
   .reply-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .emotion-grid {
     grid-template-columns: 1fr;
   }
 }
